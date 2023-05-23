@@ -1,6 +1,10 @@
-# wms_to_leaflet_map
-RIVM data als voorbeeld wms file
+# RIVM Data als voorbeeld WMS-bestand
 
-Met deze code wordt de lagenlijstcontainer (#layerListContainer) aan de linkerkant van de pagina weergegeven met een maximale hoogte van het scherm en een verticale schuifbalk indien nodig. De Leaflet-kaart (#map) neemt de rest van het beschikbare ruimte aan de rechterkant in beslag.
+Dit project demonstreert het gebruik van RIVM-data als een voorbeeld WMS-bestand met behulp van Leaflet en JavaScript. Het bevat code om de lagenlijstcontainer (`#layerListContainer`) aan de linkerkant van de pagina weer te geven, met een maximale hoogte van het scherm en een verticale schuifbalk indien nodig. De Leaflet-kaart (`#map`) neemt de rest van de beschikbare ruimte aan de rechterkant in beslag.
 
-De geselecteerde lagen worden verplaatst naar de bovenkant van de lijst zodra de bijbehorende checkbox is geselecteerd. Hierdoor worden de geselecteerde lagen altijd bovenaan de lijst weergegeven.
+## Functionaliteiten
+
+- Weergave van lagenlijstcontainer aan de linkerkant van de pagina.
+- Maximale hoogte van de lagenlijstcontainer op basis van het scherm.
+- Verticale schuifbalk toegevoegd aan de lagenlijstcontainer indien nodig.
+- Verplaatsing van geselecteerde lagen naar de bovenkant van de lijst wanneer de bijbehorende checkbox is geselecteerd. Hierdoor worden de geselecteerde lagen altijd bovenaan de lijst weergegeven.

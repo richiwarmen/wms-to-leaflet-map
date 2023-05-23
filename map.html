@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Leaflet WMS Layers</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #layerListContainer {
+      width: 30%;
+      font-size: 9px;
+      max-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    #map {
+      flex: 1;
+      height: 100vh;
+    }
+
+    #layerList {
+      background-color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="layerListContainer">
+    <div id="layerList"></div>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([52.0, 5.0], 7);
+
+    var baseLayers = {};
+    var overlays = {};
+
+    // Functie om laag toe te voegen aan kaart
+    function addLayerToMap(layerName) {
+      var layer = L.tileLayer.wms('http://data.rivm.nl/geo/alo/wms', {
+        layers: layerName,
+        format: 'image/png',
+        transparent: true
+      });
+
+      overlays[layerName] = layer;
+    }
+
+    // Haal de beschikbare WMS-lagen op via GetCapabilities
+    var capabilitiesURL = 'http://data.rivm.nl/geo/alo/wms?service=WMS&version=1.1.1&request=GetCapabilities';
+    fetch(capabilitiesURL)
+      .then(function(response) {
+        return response.text();
+      })
+      .then(function(data) {
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(data, 'text/xml');
+        var layers = xmlDoc.getElementsByTagName('Layer');
+
+        var layerListDiv = document.getElementById('layerList');
+        for (var i = 0; i < layers.length; i++) {
+          var layerName = layers[i].getElementsByTagName('Name')[0].childNodes[0].nodeValue;
+
+          var checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.id = layerName;
+          checkbox.addEventListener('change', function(e) {
+            var checked = e.target.checked;
+            var layer = overlays[e.target.id];
+            if (checked) {
+              layer.addTo(map);
+            } else {
+              map.removeLayer(layer);
+            }
+
+            // Verplaats de geselecteerde laag naar bovenaan de lijst
+            if (checked) {
+              layerListDiv.insertBefore(e.target.parentElement, layerListDiv.firstChild);
+            }
+          });
+
+          var label = document.createElement('label');
+          label.innerHTML = layerName;
+          label.setAttribute('for', layerName);
+
+          var listItem = document.createElement('div');
+          listItem.appendChild(checkbox);
+          listItem.appendChild(label);
+          layerListDiv.appendChild(listItem);
+
+          addLayerToMap(layerName);
+        }
+      })
+      .catch(function(error) {
+        console.log('Er is een fout opgetreden bij het ophalen van de WMS-lagen:', error);
+      });
+
+    // Voeg de basiskaart toe aan de kaart
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      maxZoom: 18,
+    }).addTo(map);
+  </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
-# RIVM Data als voorbeeld WMS-bestand
+# WMS-bestand uitlezen en beschikbaar maken op leaflet kaart
+[RIVM WMS Dat](https://data.rivm.nl/geo/alo/wms) als voorbeeld wms bestand
 
-Dit project demonstreert het gebruik van RIVM-data als een voorbeeld WMS-bestand met behulp van Leaflet en JavaScript. Het bevat code om de lagenlijstcontainer (`#layerListContainer`) aan de linkerkant van de pagina weer te geven, met een maximale hoogte van het scherm en een verticale schuifbalk indien nodig. De Leaflet-kaart (`#map`) neemt de rest van de beschikbare ruimte aan de rechterkant in beslag.
+Deze file demonstreert het gebruik van RIVM-data als een voorbeeld WMS-bestand met behulp van Leaflet en JavaScript. Het bevat code om de lagenlijstcontainer (`#layerListContainer`) aan de linkerkant van de pagina weer te geven, met een maximale hoogte van het scherm en een verticale schuifbalk indien nodig. De Leaflet-kaart (`#map`) neemt de rest van de beschikbare ruimte aan de rechterkant in beslag.
 
 ## Functionaliteiten
 

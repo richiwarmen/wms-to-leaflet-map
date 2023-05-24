@@ -1,11 +1,12 @@
-# WMS-bestand uitlezen en beschikbaar maken op leaflet kaart
-[RIVM WMS Dat](https://data.rivm.nl/geo/alo/wms) als voorbeeld wms bestand
+# Reading and Displaying WMS File on Leaflet Map
 
-Deze file demonstreert het gebruik van RIVM-data als een voorbeeld WMS-bestand met behulp van Leaflet en JavaScript. Het bevat code om de lagenlijstcontainer (`#layerListContainer`) aan de linkerkant van de pagina weer te geven, met een maximale hoogte van het scherm en een verticale schuifbalk indien nodig. De Leaflet-kaart (`#map`) neemt de rest van de beschikbare ruimte aan de rechterkant in beslag.
+[RIVM WMS Data](https://data.rivm.nl/geo/alo/wms) used as an example WMS file.
 
-## Functionaliteiten
+This file demonstrates the usage of RIVM data as an example WMS file using Leaflet and JavaScript. It includes code to display the layer list container (`#layerListContainer`) on the left side of the page, with a maximum height based on the screen and a vertical scrollbar if necessary. The Leaflet map (`#map`) takes up the remaining available space on the right side.
 
-- Weergave van lagenlijstcontainer aan de linkerkant van de pagina.
-- Maximale hoogte van de lagenlijstcontainer op basis van het scherm.
-- Verticale schuifbalk toegevoegd aan de lagenlijstcontainer indien nodig.
-- Verplaatsing van geselecteerde lagen naar de bovenkant van de lijst wanneer de bijbehorende checkbox is geselecteerd. Hierdoor worden de geselecteerde lagen altijd bovenaan de lijst weergegeven.
+## Features
+
+- Display of layer list container on the left side of the page.
+- Maximum height of the layer list container based on the screen.
+- Vertical scrollbar added to the layer list container if necessary.
+- Moving selected layers to the top of the list when their respective checkboxes are selected. This ensures that the selected layers are always displayed at the top of the list.
